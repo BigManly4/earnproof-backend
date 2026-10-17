@@ -434,6 +434,7 @@ model Organization {
   domainEventsOutbox       DomainEventOutbox[]
   bulkAdminJobs        BulkAdminJob[]
   securityNotifications SecurityNotification[]
+  credentialVerificationKeyTrustPins CredentialVerificationKeyTrustPin[]
 
   @@index([status])
   @@index([archivedAt])
@@ -531,6 +532,7 @@ model Issuer {
   policyCommitments       IssuerPolicyCommitment[]
   invoiceSettlements      ProofInvoiceSettlement[]
   signingKeys             IssuerSigningKey[]
+  credentialVerificationKeyTrustPins CredentialVerificationKeyTrustPin[]
 
   @@index([organizationId])
   @@index([status])
@@ -854,6 +856,7 @@ model Proof {
   disclosureReceipts      DisclosureReceipt[]
   disputes                ProofDispute[]
   expirationReminderDeliveries ProofExpirationReminderDelivery[]
+  verificationProvenances      VerificationProvenance[]
 
   @@index([userId, status])
   @@index([userId, createdAt, id])
@@ -1055,6 +1058,7 @@ model VerificationProvenance {
   /// Timestamp when decision was made
   decidedAt     DateTime  @default(now())
   createdAt     DateTime  @default(now())
+  verificationProvenanceSources VerificationProvenanceSource[]
 
   @@unique([proofId, decidedAt])
   @@index([proofId, createdAt])
@@ -2443,6 +2447,8 @@ model ProofExpirationReminderDelivery {
   @@unique([proofId, windowHours])
   @@index([status, scheduledFor])
   @@index([userId, status])
+}
+
 enum TransactionConfirmationStatus {
   SUBMITTED
   PENDING
