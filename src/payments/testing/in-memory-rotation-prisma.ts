@@ -214,6 +214,11 @@ export class InMemoryRotationPrisma {
 
   private queue: Promise<unknown> = Promise.resolve();
 
+  /** Mirrors PrismaService.appendAuditLog: a chain append inside `tx`. */
+  appendAuditLog(tx: this, args: { data: Row }) {
+    return tx.auditLog.create(args);
+  }
+
   private tables(): Table[] {
     return [
       this.user,

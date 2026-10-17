@@ -571,7 +571,9 @@ export class PaymentAccountRotationService {
     action: string,
     extra: Record<string, unknown>,
   ): Promise<void> {
-    await tx.auditLog.create({
+    // Appended within `tx`, so the record commits or rolls back with the
+    // transition it describes (see PrismaService.appendAuditLog).
+    await this.prisma.appendAuditLog(tx, {
       data: {
         actorType: "user",
         actorId: user.id,
