@@ -17,6 +17,7 @@ import { CredentialsModule } from "./credentials/credentials.module";
 import { DatabaseModule } from "./database/database.module";
 import { DisputesModule } from "./disputes/disputes.module";
 import { HealthModule } from "./health/health.module";
+import { IntegrationsModule } from "./integrations/integrations.module";
 import { HttpMetricsInterceptor } from "./common/interceptors/http-metrics.interceptor";
 import { IdempotentInterceptor } from "./common/interceptors/idempotent.interceptor";
 import { ObservabilityModule } from "./common/observability/observability.module";
@@ -37,7 +38,7 @@ import { SupportAccessModule } from "./support-access/support-access.module";
 import { ReconciliationModule } from "./reconciliation/reconciliation.module";
 import { DeploymentsModule } from "./deployments/deployments.module";
 import { NotificationsModule } from "./notifications/notifications.module";
-import { MetricsModule } from "./metrics/metrics.module";
+import { SecurityModule } from "./security/security.module";
 
 @Module({
   imports: [
@@ -61,6 +62,7 @@ import { MetricsModule } from "./metrics/metrics.module";
     RateLimitModule,
     DisputesModule,
     HealthModule,
+    IntegrationsModule,
     OrganizationsModule,
     DataResidencyModule,
     IssuersModule,
@@ -78,7 +80,7 @@ import { MetricsModule } from "./metrics/metrics.module";
     ReconciliationModule,
     DeploymentsModule,
     NotificationsModule,
-    MetricsModule,
+    SecurityModule,
   ],
   providers: [
     {

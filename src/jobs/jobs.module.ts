@@ -23,7 +23,10 @@ import { ProofExpirationReconcilerService } from "./proof-expiration-reconciler.
 import { ProofSharingCleanupJob } from "./proof-sharing-cleanup.job";
 import { RetentionCleanupService } from "./retention/retention-cleanup.service";
 import { RetentionJob } from "./retention/retention.job";
+import { RevocationPropagationController } from "./revocation-propagation.controller";
+import { RevocationPropagationReconcilerService } from "./revocation-propagation-reconciler.service";
 import { WebhookCertificateExpiryJob } from "./webhook-certificate-expiry.job";
+import { WebhookTlsProbeJob } from "./webhook-tls-probe.job";
 import { DomainEventOutboxWorkerService } from "./domain-event-outbox-worker.service";
 import { BulkAdminService } from "./bulk-admin/bulk-admin.service";
 import { BulkAdminController } from "./bulk-admin/bulk-admin.controller";
@@ -41,6 +44,7 @@ import { MetricsRollupJob } from "./metrics-rollup.job";
     ApiKeysModule,
     MetricsModule,
   ],
+  controllers: [JobExecutionController, RevocationPropagationController],
   controllers: [JobExecutionController, BulkAdminController],
   providers: [
     ContractAnchoringService,
@@ -58,9 +62,11 @@ import { MetricsRollupJob } from "./metrics-rollup.job";
     RetentionJob,
     ApprovalExpiryJob,
     WebhookCertificateExpiryJob,
+    WebhookTlsProbeJob,
     JobExecutionService,
     JobExecutionMaintenanceJob,
     AttestationReconcilerService,
+    RevocationPropagationReconcilerService,
     BulkAdminService,
     MetricsRollupJob,
   ],
@@ -76,6 +82,7 @@ import { MetricsRollupJob } from "./metrics-rollup.job";
     IssuerReconciliationService,
     RetentionCleanupService,
     JobExecutionService,
+    RevocationPropagationReconcilerService,
     BulkAdminService,
   ],
 })
