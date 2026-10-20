@@ -31,6 +31,7 @@ import { PurposeDeclarationsController } from "./purpose-declarations.controller
     AttestationsModule,
     IssuersModule,
     WebhooksModule,
+    NotificationsModule,
     QuotasModule,
     HealthModule,
   ],
